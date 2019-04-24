@@ -513,13 +513,7 @@ export default class DayPickerInput extends React.Component {
   }
 
   renderOverlay() {
-    const {
-      classNames,
-      dayPickerProps,
-      parseDate,
-      formatDate,
-      format,
-    } = this.props;
+    const { classNames, dayPickerProps, parseDate, format } = this.props;
     const { selectedDays, value } = this.state;
     let selectedDay;
     if (!selectedDays && value) {
@@ -530,16 +524,7 @@ export default class DayPickerInput extends React.Component {
     } else if (selectedDays) {
       selectedDay = selectedDays;
     }
-    let onTodayButtonClick;
-    if (dayPickerProps.todayButton) {
-      // Set the current day when clicking the today button
-      onTodayButtonClick = () =>
-        this.updateState(
-          new Date(),
-          formatDate(new Date(), format, dayPickerProps.locale),
-          this.hideAfterDayClick
-        );
-    }
+
     const Overlay = this.props.overlayComponent;
     return (
       <Overlay
@@ -553,7 +538,6 @@ export default class DayPickerInput extends React.Component {
       >
         <DayPicker
           ref={el => (this.daypicker = el)}
-          onTodayButtonClick={onTodayButtonClick}
           {...dayPickerProps}
           month={this.state.month}
           selectedDays={selectedDay}

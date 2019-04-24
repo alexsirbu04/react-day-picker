@@ -21,7 +21,7 @@ export default {
   weekNumber: 'DayPicker-WeekNumber',
   day: 'DayPicker-Day',
   footer: 'DayPicker-Footer',
-  todayButton: 'DayPicker-TodayButton',
+  button: 'DayPicker-Button',
 
   // default modifiers
   today: 'today',

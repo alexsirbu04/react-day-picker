@@ -27,7 +27,7 @@ export class DayPicker extends Component {
     canChangeMonth: PropTypes.bool,
     reverseMonths: PropTypes.bool,
     pagedNavigation: PropTypes.bool,
-    todayButton: PropTypes.string,
+    button: PropTypes.string,
     showWeekNumbers: PropTypes.bool,
     showWeekDays: PropTypes.bool,
 
@@ -83,7 +83,7 @@ export class DayPicker extends Component {
       outside: PropTypes.string.isRequired,
       selected: PropTypes.string.isRequired,
       today: PropTypes.string.isRequired,
-      todayButton: PropTypes.string,
+      button: PropTypes.string,
       week: PropTypes.string,
       wrapper: PropTypes.string,
     }),
@@ -126,7 +126,7 @@ export class DayPicker extends Component {
     onMonthChange: PropTypes.func,
     onCaptionClick: PropTypes.func,
     onWeekClick: PropTypes.func,
-    onTodayButtonClick: PropTypes.func,
+    onButtonClick: PropTypes.func,
   };
 
   static defaultProps = {
@@ -481,14 +481,12 @@ export class DayPicker extends Component {
     }
   }
 
-  handleTodayButtonClick = e => {
+  handleButtonClick = e => {
     const today = new Date();
-    const month = new Date(today.getFullYear(), today.getMonth());
-    this.showMonth(month);
     e.target.blur();
-    if (this.props.onTodayButtonClick) {
+    if (this.props.onButtonClick) {
       e.persist();
-      this.props.onTodayButtonClick(
+      this.props.onButtonClick(
         new Date(today.getFullYear(), today.getMonth(), today.getDate()),
         ModifiersUtils.getModifiersForDay(today, this.props.modifiers),
         e
@@ -552,26 +550,26 @@ export class DayPicker extends Component {
   }
 
   renderFooter() {
-    if (this.props.todayButton) {
+    if (this.props.button) {
       return (
         <div className={this.props.classNames.footer}>
-          {this.renderTodayButton()}
+          {this.renderButton()}
         </div>
       );
     }
     return null;
   }
 
-  renderTodayButton() {
+  renderButton() {
     return (
       <button
         type="button"
         tabIndex={0}
-        className={this.props.classNames.todayButton}
-        aria-label={this.props.todayButton}
-        onClick={this.handleTodayButtonClick}
+        className={this.props.classNames.button}
+        aria-label={this.props.button}
+        onClick={this.handleButtonClick}
       >
-        {this.props.todayButton}
+        {this.props.button}
       </button>
     );
   }
