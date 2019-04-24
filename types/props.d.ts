@@ -1,7 +1,13 @@
 // TypeScript Version: 2.2
 
 import * as React from 'react';
-import { ClassNames, Modifier, Modifiers, DayModifiers, InputClassNames } from './common';
+import {
+  ClassNames,
+  Modifier,
+  Modifiers,
+  DayModifiers,
+  InputClassNames,
+} from './common';
 import { LocaleUtils } from './utils';
 import { DayPickerInput } from './DayPickerInput';
 
@@ -116,7 +122,7 @@ export interface DayPickerProps {
   onFocus?(e: React.FocusEvent<HTMLDivElement>): void;
   onKeyDown?(e: React.KeyboardEvent<HTMLDivElement>): void;
   onMonthChange?(month: Date): void;
-  onTodayButtonClick?(
+  onButtonClick?(
     day: Date,
     modifiers: DayModifiers,
     e: React.MouseEvent<HTMLButtonElement>
@@ -133,7 +139,7 @@ export interface DayPickerProps {
   selectedDays?: Modifier | Modifier[];
   showWeekNumbers?: boolean;
   showWeekDays?: boolean;
-  todayButton?: string;
+  button?: string;
   toMonth?: Date;
   weekdayElement?:
     | React.ReactElement<Partial<WeekdayElementProps>>

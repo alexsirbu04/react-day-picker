@@ -20,7 +20,7 @@ export interface ClassNames {
   week: string;
   day: string;
   footer: string;
-  todayButton: string;
+  button: string;
 
   today: string;
   selected: string;
